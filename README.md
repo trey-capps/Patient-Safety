@@ -16,3 +16,10 @@ text_cleaning.py - This file uses dexcom_txt_all.csv and subsets data to only co
 preprocess_model.py - This file uses dexcom_txt_clean.csv. This file will preprocess the data and extract topics. The output file is topics_dataframe.csv.
 
 Topic_TS.py - This file uses topics_dataframe.csv. This file is used to create the time series plots for topics.
+
+
+PRESENTATION
+
+
+FINAL REPORT
+

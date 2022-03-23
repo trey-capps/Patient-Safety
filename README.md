@@ -1,17 +1,8 @@
 # Patient-Safety
 DATA
 
-dexcomG4.csv - This file contains g4 device reports from January 2016 to December 2020
-
-dexcomG5.csv - This file contains g5 device reports from January 2016 to December 2020
-
-dexcomG6.csv - This file contains g6 device reports from January 2016 to December 2020
-
-dexcomG6_21.csv - This file contains g6 device reports from 2021 to present.
-
-dexcom_txt_all.csv - This file contains all text reports relating to Dexcom.
-
-Project EDA.R - This file contains the EDA plots and date formatting/data cleaning. 
+Can be downloaded at this link: https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfmaude/search.cfm
+Extract cases relating to Dexcom G4, G5, and G6 continuous glucose monitors.
 
 
 CODE

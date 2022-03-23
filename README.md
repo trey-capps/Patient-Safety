@@ -18,8 +18,5 @@ preprocess_model.py - This file uses dexcom_txt_clean.csv. This file will prepro
 Topic_TS.py - This file uses topics_dataframe.csv. This file is used to create the time series plots for topics.
 
 
-PRESENTATION
-
-
-FINAL REPORT
-
+PRESENTATION: PatientSafe_Presentation.pptx
+FINAL REPORT: PatientSafe_FinalReport.pdf

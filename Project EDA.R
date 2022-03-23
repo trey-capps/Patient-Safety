@@ -1,7 +1,7 @@
 library(tidyverse)
-g6 = read.csv("/Users/liviapopa/Downloads/dexcomG6.csv")
-g5 = read.csv("/Users/liviapopa/Downloads/dexcomG5.csv")
-g4 = read.csv("/Users/liviapopa/Downloads/dexcomG4.csv")
+g6 = read.csv("./dexcomG6.csv")
+g5 = read.csv("./dexcomG5.csv")
+g4 = read.csv("./dexcomG4.csv")
 
 g4$DATE_RECEIVED =substr(g4$DATE_RECEIVED, 1,7)
 g5$DATE_RECEIVED =substr(g5$DATE_RECEIVED, 1,7)

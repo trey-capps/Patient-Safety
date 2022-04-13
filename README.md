@@ -1,4 +1,9 @@
 # Patient-Safety
+PURPOSE
+
+The purpose of this analysis was to look at patient reports based on Dexcom continuous glucose monitor issues. Time series forecasting and analysis along with topic modeling was used to model topics over time. 
+
+
 DATA
 
 Can be downloaded at this link: https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfmaude/search.cfm

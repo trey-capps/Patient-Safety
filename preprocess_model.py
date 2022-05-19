@@ -22,7 +22,7 @@ txt_df = txt_all_df[txt_all_df['G6'] == 1].copy()
 #Create list of report text
 text = txt_df['FOI_TEXT'].to_list()
 
-#Remove Regular Expressions
+#Keep only A-Z, a-z, and 0-9 Expressions
 text = [re.sub(r'[^a-zA-Z0-9]', ' ', i) for i in text]
 
 

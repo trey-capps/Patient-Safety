@@ -1,4 +1,25 @@
 # Patient-Safety
+
+## Download Data to GCP storage bucket
+
+Data will be downloaded straight into a GCP bucket to  avoid saving the data locally. 
+
+#### Device Data 
+
+2016 Example:
+
+```curl https://www.accessdata.fda.gov/MAUDE/ftparea/device2016.zip | gsutil cp - gs://maude-device-reports/device2016.zip```
+
+
+#### Narative Data 
+
+2016 Example:
+
+```curl https://www.accessdata.fda.gov/MAUDE/ftparea/foitext2016.zip/foitext2016.txt | gsutil cp - gs://maude-device-reports/foitext2016.txt```
+
+
+
+## Old README
 PURPOSE
 
 The purpose of this analysis was to look at patient reports based on Dexcom continuous glucose monitor issues. Time series forecasting and analysis along with topic modeling was used to model topics over time. 

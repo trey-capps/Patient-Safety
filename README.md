@@ -4,18 +4,56 @@
 
 Data will be downloaded straight into a GCP bucket to  avoid saving the data locally. 
 
+This can be done using the GCP Cloud Shell. The data will be downloaded from [here](https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfmaude/search.cfm). This data will be a ```.zip``` file which will need to be unzipped using the Cloud Shell as well. 
+
+We have two datasets for the years 2016 to 2021. 
+
 #### Device Data 
+
+Device data contains all the information about the device.
 
 2016 Example:
 
-```curl https://www.accessdata.fda.gov/MAUDE/ftparea/device2016.zip | gsutil cp - gs://maude-device-reports/device2016.zip```
+Ingest the data into a GCP storage bucket...
 
+```curl https://www.accessdata.fda.gov/MAUDE/ftparea/device2021.zip | gsutil cp - gs://maude-device-reports/device2021.zip```
+
+
+```gsutil cat gs://maude-device-reports/device2021.zip | zcat |  gsutil cp - gs://maude-device-reports/device2021.txt```
 
 #### Narative Data 
 
+Narrative data contains all the text that has been submitted with the device malfunction report. 
+
 2016 Example:
 
-```curl https://www.accessdata.fda.gov/MAUDE/ftparea/foitext2016.zip/foitext2016.txt | gsutil cp - gs://maude-device-reports/foitext2016.txt```
+```curl https://www.accessdata.fda.gov/MAUDE/ftparea/foitext2021.zip | gsutil cp - gs://maude-device-reports/foitext2021.zip```
+
+
+```gsutil cat gs://maude-device-reports/foitext2021.zip | zcat |  gsutil cp - gs://maude-device-reports/foitext2021.txt```
+
+## Setting Up Jupyter on Cloud Dataproc
+
+Set environment variables
+```
+REGION=[ADD REGION]
+CLUSTER_NAME=[ADD CLUSTER NAME]
+BUCKET_NAME=[ADD BUCKET NAME]
+```
+
+```
+gcloud dataproc clusters create ${CLUSTER_NAME} \
+    --bucket=${BUCKET_NAME} \
+    --optional-components=JUPYTER \
+    --region=${REGION} \
+    --enable-component-gateway
+```
+
+Ensure you do not leave out ```--enable-component-gateway``` as this will provide authenticated and secure access to JupyterLab
+
+## Data Cleaning
+
+```jupyter-dexcom_cleaning.ipynb``` uses Spark SQL to join device and narrative dataset along with concatenating all the years into one dataset. Only the original device reports (not the updated entries) will be used for topic modeling. These are specified as ```TEXT_TYPE_CODE == 'N'```. We can also filter only the Dexcom entries and export the new file. 
 
 
 

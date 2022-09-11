@@ -1,1 +1,5 @@
 patient-safety-361691-dc3c196ff3b5.json
+.ipynb_checkpoints
+*.txt
+spark-warehouse
+dexcom_reports_all

@@ -1,6 +1,10 @@
 # Patient-Safety
 
-## Download Data to GCP storage bucket
+## Extract Data
+
+### Cloud Option
+
+#### Download Data to GCP storage bucket
 
 Data will be downloaded straight into a GCP bucket to  avoid saving the data locally. 
 
@@ -12,7 +16,7 @@ We have two datasets for the years 2016 to 2021.
 
 Device data contains all the information about the device.
 
-2016 Example:
+2021 Example:
 
 Ingest the data into a GCP storage bucket...
 
@@ -25,14 +29,15 @@ Ingest the data into a GCP storage bucket...
 
 Narrative data contains all the text that has been submitted with the device malfunction report. 
 
-2016 Example:
+2021 Example:
 
 ```curl https://www.accessdata.fda.gov/MAUDE/ftparea/foitext2021.zip | gsutil cp - gs://maude-device-reports/foitext2021.zip```
 
 
 ```gsutil cat gs://maude-device-reports/foitext2021.zip | zcat |  gsutil cp - gs://maude-device-reports/foitext2021.txt```
 
-## Setting Up Jupyter on Cloud Dataproc
+#### Setting Up Jupyter on Cloud Dataproc
+Using the Cloud Shell...
 
 Set environment variables
 ```
@@ -51,10 +56,17 @@ gcloud dataproc clusters create ${CLUSTER_NAME} \
 
 Ensure you do not leave out ```--enable-component-gateway``` as this will provide authenticated and secure access to JupyterLab
 
+### Local Option
+
+In the home directory run: ```python extract_data.py``` to extract device and text data for 2016 to 2021
+
+
 ## Data Cleaning
 
-```jupyter-dexcom_cleaning.ipynb``` uses Spark SQL to join device and narrative dataset along with concatenating all the years into one dataset. Only the original device reports (not the updated entries) will be used for topic modeling. These are specified as ```TEXT_TYPE_CODE == 'N'```. We can also filter only the Dexcom entries and export the new file. 
+```jupyter-dexcom_cleaning.ipynb``` uses Spark SQL to join device and narrative dataset along with concatenating all the years into one dataset. Only the original device reports (not the updated entries) will be used for topic modeling. These are specified as ```TEXT_TYPE_CODE == 'N'```. We can also filter only the Dexcom entries and export the new file.
 
+### Dataproc Cluster
+After your Dataproc cluster is setup, you can launch the Jupyter Notebook UI to clean the data through GCP
 
 
 ## Old README
